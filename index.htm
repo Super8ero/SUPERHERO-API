@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+		<link rel="stylesheet" href="css/bootstrap.css">
+		<link rel="stylesheet" href="css/style.css" type="text/css" />
+		<script type="text/javascript" src="js/jquery-3.4.1.js"></script>
+		<script type="text/javascript" src="js/bootstrap.bundle.js"></script>
+		<link rel="stylesheet" href="css/gallery-grid.css">            
+		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+		<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.3/css/all.css" integrity="sha384-UHRtZLI+pbxtHCWp1t77Bi1L4ZtiqrqD80Kn4Z8NTSRyMA2Fd33n5dQ8lWUE00s/" crossorigin="anonymous">
+	  	<title>Catalogo SuperHero</title>
+	</head>
+
+	<script type="text/javascript">
+	    $(function(){     
+	    	carregaBatman();
+	    	carregaHeroi();
+	    });
+
+
+		async function carregaBatman() {
+		    let baseURL = 'http://superheroapi.com/api.php/2570420946310624/search/batman'
+		    var url = "";
+		    var resp = "<h5>Pesquisa por Batman</h5>";
+			resp += "<table class='table table-hover'>";
+			resp += "  <thead style='background-color:#005b82;color:white;'>";
+			resp += "    <tr>";
+			resp += "      <th scope='col'>Id</th>";
+			resp += "      <th scope='col'>Nome</th>";
+			resp += "      <th scope='col'>Nome Completo</th>";
+			resp += "      <th scope='col'>Alter-ego</th>";
+			resp += "      <th scope='col'>Aliados</th>";
+			resp += "      <th scope='col'>Naturalidade</th>";
+			resp += "      <th scope='col'>Primeira Aparição</th>";
+			resp += "      <th scope='col'>Selo</th>";
+			resp += "      <th scope='col'>Alinhamento</th>";
+			resp += "      <th scope='col'>Gênero</th>";
+			resp += "      <th scope='col'>Raça</th>";
+			resp += "      <th scope='col'>Altura</th>";
+			resp += "      <th scope='col'>Peso</th>";
+			resp += "      <th scope='col'>Cor dos Olhos</th>";
+			resp += "      <th scope='col'>Cor do Cabelo</th>";
+			resp += "      <th scope='col'>Trabalho</th>";
+			resp += "      <th scope='col'>Base</th>";
+			resp += "      <th scope='col'>Conexões</th>";
+			resp += "      <th scope='col'>Família</th>";
+			resp += "    </tr>";
+			resp += "  </thead>";
+			resp += "  <tbody>";
+			url = baseURL;
+		    let obj = await (await fetch(url)).json();
+		    var totReg = obj.results.length;
+			for (i = 0; i < totReg; i++) {			    
+				resp += "    <tr>";
+				resp += "      <th scope='row'>" + obj.results[i].id + "</th>";
+				resp += "      <td>" + obj.results[i].name + "</td>";
+				resp += "      <td>" + obj.results[i].biography['full-name'] + "</td>";
+				resp += "      <td>" + obj.results[i].biography['alter-egos'] + "</td>";
+				resp += "      <td>" + obj.results[i].biography['aliases'] + "</td>";
+				resp += "      <td>" + obj.results[i].biography['place-of-birth'] + "</td>";
+				resp += "      <td>" + obj.results[i].biography['first-appearance'] + "</td>";
+				resp += "      <td>" + obj.results[i].biography['publisher'] + "</td>";
+				resp += "      <td>" + obj.results[i].biography['alignment'] + "</td>";
+				resp += "      <td>" + obj.results[i].appearance.gender + "</td>";
+				resp += "      <td>" + obj.results[i].appearance.race + "</td>";
+				resp += "      <td>" + obj.results[i].appearance.height + "</td>";
+				resp += "      <td>" + obj.results[i].appearance.weight + "</td>";
+				resp += "      <td>" + obj.results[i].appearance['eye-color'] + "</td>";
+				resp += "      <td>" + obj.results[i].appearance['hair-color'] + "</td>";
+				resp += "      <td>" + obj.results[i].work.occupation + "</td>";
+				resp += "      <td>" + obj.results[i].work.base + "</td>";
+				resp += "      <td>" + obj.results[i].connections['group-affiliation'] + "</td>";
+				resp += "      <td>" + obj.results[i].connections.relatives + "</td>";
+				resp += "    </tr>";
+			    document.getElementById("divPesquisa").innerHTML = resp;
+			}
+			resp += "  </tbody>";
+			resp += "</table>";
+			resp += "<br><br>";
+		    document.getElementById("divPesquisa").innerHTML = resp;
+		}
+
+
+		async function carregaHeroi() {
+		    let baseURL = 'http://superheroapi.com/api.php/2570420946310624/'
+		    var url = "";
+		    var resp = "<h5>Lista Completa</h5>";
+			resp += "<table class='table table-hover'>";
+			resp += "  <thead style='background-color:#005b82;color:white;'>";
+			resp += "    <tr>";
+			resp += "      <th scope='col'>Id</th>";
+			resp += "      <th scope='col'>Nome</th>";
+			resp += "      <th scope='col'>Nome Completo</th>";
+			resp += "      <th scope='col'>Alter-ego</th>";
+			resp += "      <th scope='col'>Aliados</th>";
+			resp += "      <th scope='col'>Naturalidade</th>";
+			resp += "      <th scope='col'>Primeira Aparição</th>";
+			resp += "      <th scope='col'>Selo</th>";
+			resp += "      <th scope='col'>Alinhamento</th>";
+			resp += "      <th scope='col'>Gênero</th>";
+			resp += "      <th scope='col'>Raça</th>";
+			resp += "      <th scope='col'>Altura</th>";
+			resp += "      <th scope='col'>Peso</th>";
+			resp += "      <th scope='col'>Cor dos Olhos</th>";
+			resp += "      <th scope='col'>Cor do Cabelo</th>";
+			resp += "      <th scope='col'>Trabalho</th>";
+			resp += "      <th scope='col'>Base</th>";
+			resp += "      <th scope='col'>Conexões</th>";
+			resp += "      <th scope='col'>Família</th>";
+			resp += "    </tr>";
+			resp += "  </thead>";
+			resp += "  <tbody>";
+			for (i = 1; i < 732; i++) {
+				url = baseURL + i;
+			    let obj = await (await fetch(url)).json();
+				resp += "    <tr>";
+				resp += "      <th scope='row'>" + obj.id + "</th>";
+				resp += "      <td>" + obj.name + "</td>";
+				resp += "      <td>" + obj.biography['full-name'] + "</td>";
+				resp += "      <td>" + obj.biography['alter-egos'] + "</td>";
+				resp += "      <td>" + obj.biography['aliases'] + "</td>";
+				resp += "      <td>" + obj.biography['place-of-birth'] + "</td>";
+				resp += "      <td>" + obj.biography['first-appearance'] + "</td>";
+				resp += "      <td>" + obj.biography['publisher'] + "</td>";
+				resp += "      <td>" + obj.biography['alignment'] + "</td>";
+				resp += "      <td>" + obj.appearance.gender + "</td>";
+				resp += "      <td>" + obj.appearance.race + "</td>";
+				resp += "      <td>" + obj.appearance.height + "</td>";
+				resp += "      <td>" + obj.appearance.weight + "</td>";
+				resp += "      <td>" + obj.appearance['eye-color'] + "</td>";
+				resp += "      <td>" + obj.appearance['hair-color'] + "</td>";
+				resp += "      <td>" + obj.work.occupation + "</td>";
+				resp += "      <td>" + obj.work.base + "</td>";
+				resp += "      <td>" + obj.connections['group-affiliation'] + "</td>";
+				resp += "      <td>" + obj.connections.relatives + "</td>";
+				resp += "    </tr>";
+			    document.getElementById("divLista").innerHTML = resp;
+			}
+			resp += "  </tbody>";
+			resp += "</table>";
+			resp += "<br><br>";
+		    document.getElementById("divLista").innerHTML = resp;
+		}
+
+	</script>
+
+	<body>
+	    <div class="container">
+			<div class="banner banner-sm" style="background-color: #005b82">
+				<div class="text-center text-white">
+					<br>
+					<h3><strong>Catálogo SuperHero</h3>
+					<h5>Todos os Super Herois e Vilões em um só lugar</h5>
+					<br>
+				</div>
+			</div>
+
+			<hr class="featurette-divider" style="margin-top: 2rem; margin-bottom: 1rem;">
+
+			<div class="col col-sm-12 col-md-12 col-lg-12 col-xl-12" id="divPesquisa" name="divPesquisa" style="display: block;"></div>
+			<div class="col col-sm-12 col-md-12 col-lg-12 col-xl-12" id="divLista" name="divLista" style="display: block;"></div>
+
+		</div>
+	</body>
+</html>
