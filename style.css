@@ -1,0 +1,16 @@
+a {
+	cursor:pointer;
+}
+
+.tableLayoutPadrao 			{ overflow-y: auto; height: 405px; }
+.tableLayoutPadrao thead th { background:#eee; font-size: 90%; }
+
+.texto-cor-padrao {
+	color: rgb(0, 91, 130);
+	background-color: white;
+}
+
+.container {
+	margin-left: 5px;
+}
+
